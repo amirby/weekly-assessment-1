@@ -4,19 +4,35 @@ var HashTable = function() {
   this._storage = [];
   this._count = 0;
   this._limit = 8;
+  for (var i = 0; i<this._limit; i++){
+    this._storage[i]= new Map()
+  }
 }
 
 
 HashTable.prototype.insert = function(key, value) {
+  var index = this.hashFunc(key,this._limit);
+  this._storage[index].set(key,value);
+  this._count++
+  return value
 };
 
 
 HashTable.prototype.remove = function(key) {
+  var index = this.hashFunc(key,this._limit);
+  var value = this.retrieve(key);
+  this._storage[index].delete(key);
+  if (this._count>0){
+    this._count--
+  }
+  return value
 };
 
 
 
 HashTable.prototype.retrieve = function(key) {
+  var index = this.hashFunc(key,this._limit);
+  return this._storage[index].get(key)
 };
 
 

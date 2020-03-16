@@ -24,5 +24,25 @@ class Stack {
 ////////////////////////////////////////////////////////////
 
 class Queue {
+  constructor(){
+    this.rear = new Stack();
+    this.front = new Stack()
+  }
 
+  enqueue(value){
+    if (!this.rear){
+      this.rear.push(value)
+      this.front.push(value)
+    }
+    else 
+    this
+    this.front.pop();
+    this.front.push(value);
+  }
+  dequeue(){
+
+  }
+  size(){
+
+  }
 }
